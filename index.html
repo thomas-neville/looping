@@ -5,15 +5,25 @@
   <style type="text/css">
     body {
       font-family: sans-serif;
-      margin: 1rem;
+      padding: 1rem;
     }
     
     img {
-      max-width: 50vw;
-      margin: 1rem 0;
+      width: 15rem;
+      margin: 1rem;
       float: left;
+      border-radius: 10px;
     }
     
+    img::after {
+      clear: both;
+    }
+    
+    button {
+      float: left;
+      margin: 1rem;
+    }
+        
     .red {
       color: red;
     }
@@ -25,7 +35,7 @@
       margin-bottom: 3rem;
       position: relative;
       animation-name: roller-coaster;
-      animation-duration: 6s;
+      animation-duration: 5s;
       animation-iteration-count: infinite;
     }
     
@@ -44,17 +54,22 @@
       58% {left:175px; top:75px;}
       60% {left:190px; top:100px}
       100% {left:0px; top:100px;}
-    }
-    
-    
+    }  
   </style>
 </head>
 <body>
   <h1>Whee!</h1>
-
+  
   <img id="roller" src="" alt="roller coaster">
-
+      
+    <button onclick="rideAgain()">Ride Again!</button>
+    
   <script type="text/javascript">
+    // Refresh button code for rideAgain
+    function rideAgain() {
+      location.reload();
+    }
+    
     // Description:
 
     // When complete, this program will ask the user how many roller coaster rides
@@ -86,6 +101,8 @@
     var howMany = prompt("How many times do you want to ride the rollercoaster?");
 
     var counter = 1;
+    
+    parseInt(howMany);
 
     // TODO: execute this loop the number of times user requested
     while(howMany >= counter){
@@ -95,6 +112,7 @@
       // this value will increase by one on each iteration of the loop,
       // so image source will cycle through all possible images
       var theOne = counter % imageSources.length;
+      
       // reset the src of the image to the next member of the sources array
       theImg.setAttribute("src", imageSources[theOne]);
 
@@ -105,7 +123,11 @@
     // EXTRA CHALLENGES:
     // 1. Using JS, add a class of "red" to the <h1>.
     //    This only needs to be done once, so code should be outside loop.
+    
     // 2. Execute the loop only half as many times, or twice as many times, as the user requested.
+    // Half as many times - while(howMany < counter / 2)
+    // Twice as many times - while(howMany < counter * 2)
+    
     // 3. Add a pause to each loop, so user can see each image as it cycles past.
     //    This is a difficult one!
 
